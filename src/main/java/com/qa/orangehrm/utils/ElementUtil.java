@@ -123,6 +123,32 @@ public class ElementUtil {
 	//********************Select Class for DropDown utils **********************************************
 	
 	/**
+	 * this method is used to select value from drop down by value or by index or by visibletext. This is generic method for all 3 types
+	 * @param locator
+	 * @param type
+	 * @param value
+	 */
+	public void selectDropdownValue(By locator,String type, String value) {
+		Select select = new Select(getElement(locator));
+		
+		switch (type) {
+		case "value":
+			select.selectByValue(value);
+			break;
+		case "index":
+			select.selectByIndex(Integer.parseInt(value));
+			break;
+		case "visibletext":
+			select.selectByVisibleText(value);
+			break;
+		default:
+			System.out.println("Please pass the correct selection criteira");
+			break;
+		}
+	}
+	
+	
+	/**
 	 * this method is used to select value from drop down
 	 * @param locator
 	 * @param value
